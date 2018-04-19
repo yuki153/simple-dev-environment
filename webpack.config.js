@@ -45,7 +45,7 @@ module.exports = {
                   // ソースマップの利用有無
                   sourceMap: true,
                   // 空白文字やコメントを削除する
-                  minimize: true,
+                  minimize: false,
                   // Sass+PostCSSの場合は2を指定
                   importLoaders: 2
                 },
@@ -60,7 +60,9 @@ module.exports = {
                   plugins: [
                     // Autoprefixerを有効化
                     // ベンダープレフィックスを自動付与する
-                    require('autoprefixer')({grid: true})
+                    require('autoprefixer')({
+                      browsers: ['last 2 major versions', ' ie >= 10', 'android >= 4.4', 'iOS >= 9']
+                    })
                   ]
                 },
               },
@@ -70,6 +72,7 @@ module.exports = {
                 options: {
                   // ソースマップの利用有無
                   sourceMap: true,
+                  outputStyle: 'expanded'
                 }
               }
             ]
