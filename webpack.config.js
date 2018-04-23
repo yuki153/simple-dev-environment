@@ -2,7 +2,10 @@ const path = require('path');
 const webpack = require("webpack");
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlBeautifyPlugin = require('html-beautify-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
 
 
 module.exports = {
@@ -22,8 +25,8 @@ module.exports = {
     
   // 出力ファイル
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: "bundle.js"
+    path: path.join(__dirname, 'dist'), // 全体の出力パス(root)
+    filename: "js/bundle.js"
     //globalObject: 'this'
   },
   module: {
@@ -61,7 +64,7 @@ module.exports = {
                     // Autoprefixerを有効化
                     // ベンダープレフィックスを自動付与する
                     require('autoprefixer')({
-                      browsers: ['last 2 major versions', ' ie >= 10', 'android >= 4.4', 'iOS >= 9']
+                      browsers: ['last 2 major versions', '> 1%', ' ie >= 10', 'android >= 4.4']
                     })
                   ]
                 },
@@ -78,6 +81,38 @@ module.exports = {
             ]
         }),
       },
+      //{
+      //  test: /\.(jpg|png|gif)$/,
+      //  use: [
+      //      {
+      //          loader: 'file-loader',
+      //          options: {
+      //              //name: '[name].[ext]',
+      //              //outputPath : 'img/',
+      //              publicPath : '../img/'
+      //          }
+      //      }
+      //  ]
+      //},
+      {
+        // 拡張子 .js の場合
+        test: /\.js$/,
+        use: [
+          {
+            // Babel を利用する
+            loader: 'babel-loader',
+            // Babel のオプションを指定する
+            options: {
+              presets: [
+                // env を指定することで、ES2017 を ES5 に変換。
+                // {modules: false}にしないと import 文が Babel によって CommonJS に変換され、
+                // webpack の Tree Shaking 機能が使えない
+                ['env', {'modules': false}]
+              ]
+            }
+          }
+        ]
+      }, 
     ],
   },
   plugins: [
@@ -85,6 +120,37 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./develop/index.html"
     }),
-    new ExtractTextPlugin('bundle.css')
+    new HtmlBeautifyPlugin({
+      config: {
+          html: {
+              end_with_newline: true,  // 出力の最後に改行させる
+              indent_size: 4,          // indent space4
+              indent_with_tabs: false, // tab false
+              preserve_newlines: true, // 改行維持
+              extra_liners: '',        // 終了タグの後に空白行を挿入する要素のリスト
+              unformatted: ['p', 'i', 'b', 'span'] // beautyしない
+          }
+      },
+      replace: [ ' type="text/javascript"' ]
+    }),
+    new ExtractTextPlugin('css/bundle.css'),
+    new CopyWebpackPlugin([{
+      from: 'develop/img/',
+      to: 'img/',
+      context: './'
+    }]),
+    new ImageminPlugin({
+      test: 'img/**',
+      optipng: {
+        optimizationLevel: 3
+      },
+      pngquant: {
+        quality: '95-100',
+        speed: 1
+      },
+      jpegtran: {
+        progressive: true
+      }
+    })
   ]
 }
