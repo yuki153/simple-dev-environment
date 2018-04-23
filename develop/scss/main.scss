@@ -8,12 +8,6 @@ body {
     font-family: sans-serif;
 }
 
-.hello-world {
-    font-weight: bold;
-    font-size: 20px;
-    color: red;
-}
-
 .test-box {
     display: flex;
     width: 300px;
@@ -21,4 +15,10 @@ body {
     justify-content: center;
     align-items: center;
     border: 1px solid red;
+    background: url(../img/test_img01.jpg) no-repeat center / 100px 100px;
+    .hello-world {
+        font-weight: bold;
+        font-size: 20px;
+        color: red;
+    }
 }
