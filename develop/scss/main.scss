@@ -9,13 +9,15 @@ body {
 }
 
 .test-box {
+    width: 200px;
+    height: 200px;
     display: flex;
-    width: 300px;
-    height: 300px;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     border: 1px solid red;
-    background: url(../img/test_img01.jpg) no-repeat center / 100px 100px;
+    background-image: url(../img/test_img03.png);
+    background-size: 50%;
+
     .hello-world {
         font-weight: bold;
         font-size: 20px;
