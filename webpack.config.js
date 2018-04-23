@@ -11,8 +11,8 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 module.exports = {
   // モード値を production に設定すると最適化された状態で、
   // development に設定するとソースマップ有効でJSファイルが出力される
-  mode: "production",
-
+  //mode: "production",
+  mode: "development",
   // メインのJS
   //entry: "./develop/js/main.js",
   entry: {
@@ -128,7 +128,7 @@ module.exports = {
               indent_with_tabs: false, // tab false
               preserve_newlines: true, // 改行維持
               extra_liners: '',        // 終了タグの後に空白行を挿入する要素のリスト
-              unformatted: ['p', 'i', 'b', 'span'] // beautyしない
+              unformatted: ['p', 'li', 'i', 'b', 'span', 'img', 'a'] // beautyしない
           }
       },
       replace: [ ' type="text/javascript"' ]
