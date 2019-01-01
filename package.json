@@ -1,7 +1,7 @@
 {
-  "name": "develop-template",
+  "name": "simple-dev-environment",
   "version": "1.0.0",
-  "description": "開発テンプレート",
+  "description": "簡易開発環境",
   "main": "index.js",
   "author": "fujino-yuki",
   "license": "MIT",
@@ -26,8 +26,9 @@
     "postcss-loader": "^2.1.4",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^2.1.1",
     "webpack": "^4.6.0",
-    "webpack-cli": "^2.0.14",
+    "webpack-cli": "3.1.1",
     "webpack-dev-server": "3.0.1-beta.0",
     "webpack-stream": "^4.0.3"
   },
