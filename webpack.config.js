@@ -97,6 +97,7 @@ module.exports = {
       {
         // 拡張子 .js の場合
         test: /\.js$/,
+        exclude: /node_modules/,
         use: [
           {
             // Babel を利用する
@@ -108,7 +109,8 @@ module.exports = {
                 // {modules: false}にしないと import 文が Babel によって CommonJS に変換され、
                 // webpack の Tree Shaking 機能が使えない
                 ['env', {'modules': false}]
-              ]
+              ],
+              plugins: ['transform-runtime']
             }
           }
         ]
