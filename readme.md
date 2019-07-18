@@ -1,6 +1,7 @@
 # Simple Dev Environment
 
 ## 概要
+
 webpack による簡易な開発環境の構築  
 この開発環境を使用することで作業ファイルは下記のようにコンパイルされます
 
@@ -10,6 +11,7 @@ webpack による簡易な開発環境の構築
 * img は設定に応じて圧縮されます
 
 ## 使用方法
+
 下記コマンドをターミナルで打ちます
 
 1. `yarn`（初回のみ）
@@ -22,7 +24,7 @@ webpack による簡易な開発環境の構築
 ”develop/” 配下の各ファイル
 
 **設定ファイルの編集**  
-webpack.config.js 
+webpack.config.js
 
 ### 補足
 
@@ -34,7 +36,6 @@ webpack.config を編集する必要があります
 
 * [最新版で学ぶwebpack 4入門 babel編](https://ics.media/entry/16028)
 * [最新版で学ぶwebpack 4入門 CSS/SASS編](https://ics.media/entry/17376)
-* [gulpで始めるwebpack 4入門_Qiita](https://qiita.com/tonkotsuboy_com/items/2d4f3862e6d05dc0bea1)
 * [webpack と HTML と CSS_Qiita](https://qiita.com/gcnishino/items/65817a4b545647a220c9)
 * [webpack で htmlファイルも出力](https://ema-hiro.hatenablog.com/entry/2017/10/12/015748)
 * [なんとなくで理解しないWebpackのCSS周辺](https://qiita.com/terrierscript/items/0574ab1ef358fecb55b9)
