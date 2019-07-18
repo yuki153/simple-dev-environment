@@ -47,8 +47,6 @@ module.exports = {
                   url: false,
                   // ソースマップの利用有無
                   sourceMap: true,
-                  // 空白文字やコメントを削除する
-                  minimize: false,
                   // Sass+PostCSSの場合は2を指定
                   importLoaders: 2
                 },
